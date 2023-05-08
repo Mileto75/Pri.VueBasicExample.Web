@@ -1,0 +1,22 @@
+﻿
+<div id="coindesk">
+    <h4>{{pageTitle}}</h4>
+    <div v-if="loaded" class="row">
+        <div v-if="hasError" class="alert alert-danger" role="alert">
+            {{error}}
+        </div>
+        <div class="col col-lg-4" v-for="currency in data">
+            <div class="card p-2">
+                <div class="card-title">{{currency.code}}</div>
+                <div class="card-subtitle">{{currency.description}}</div>
+                <div class="card-subtitle"><span v-html="currency.symbol"></span> {{currency.rate}}</div>
+            </div>
+        </div>
+    </div>
+    <div v-else>
+        <div class="spinner"></div>
+    </div>
+</div>
+<script src="~/lib/Vue/vue.js"></script>
+<script src="https://unpkg.com/axios@1.4.0/dist/axios.min.js"></script>
+<script src="~/js/coindesk/coindesk.js"></script>
